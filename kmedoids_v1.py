@@ -23,11 +23,12 @@ class k_Medoids():
     def find_medoids(self,assignments):
         medoid_ids = np.full(self.k, -1, dtype=int)
         if self.batch_size:  #is using greedy algorithm ? 0 is not using
-            subset = np.random.choice(n, self.batch_size, replace=False)
+            subset = np.random.choice(self.datalens, self.batch_size, replace=False)
         for i in range(self.k):
             if self.batch_size:
                 indices = np.intersect1d(np.where(assignments==i)[0], subset)
-            indices = np.where(assignments==i)[0]
+            else:
+                indices = np.where(assignments==i)[0]
     ##        distances = dist(x[indices, None, :], x[None, indices, :]).sum(axis=0)
 
             distances = self.pair_dis[indices[:,None],indices].sum(axis=0)

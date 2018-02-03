@@ -65,13 +65,13 @@ class k_Medoids():
                   dists[i][j]=self.dp_table(i,ids_of_mediods[j])
         return np.argmin(dists, axis=1)
 
-    def find_medoids(self,assignments):
+    def find_medoids(self,assignments,ids_of_medoids):
         medoid_ids = np.full(self.k, -1, dtype=int)
         if self.batch_size:  #is using greedy algorithm ? 0 is not using
             subset = np.random.choice(self.datalens, self.batch_size, replace=False)
         for i in range(self.k):
             if self.batch_size:
-                indices = np.intersect1d(np.where(assignments==i)[0], subset)
+                indices = np.union1d(np.intersect1d(np.where(assignments==i)[0], subset),ids_of_medoids)
             else:
                 indices = np.where(assignments==i)[0]
     ##        distances = dist(x[indices, None, :], x[None, indices, :]).sum(axis=0)
@@ -92,7 +92,7 @@ class k_Medoids():
 
         for i in range(self.max_iterators):
             print("\tFinding new medoids.")
-            ids_of_medoids = self.find_medoids(class_assignments)
+            ids_of_medoids = self.find_medoids(class_assignments,ids_of_medoids)
             print("\tReassigning points.")
             new_class_assignments = self.assign_nearest(ids_of_medoids)
 
@@ -107,7 +107,7 @@ class k_Medoids():
 
 ## Generate Fake Data
 print("Initializing Data.")
-ds = 96
+ds = 5
 ks = 6
 ns = ks * 10000
 #generate test data......

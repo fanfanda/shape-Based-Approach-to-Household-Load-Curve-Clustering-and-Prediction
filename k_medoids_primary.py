@@ -7,7 +7,7 @@ def dist(xa,xb):
         return np.sqrt(np.sum(np.square(xa-xb), axis=-1))
 ##        return np.array(map(lambda x,y:dtw(x, y, dist=euclidean),xa,xb))
 class k_Medoids():
-    def __init__(self,data,k=12,batch_size=10,max_iterators=20):
+    def __init__(self,data,k=12,batch_size=1000,max_iterators=20):
         self.data=data
         self.k=k
         self.batch_size=batch_size
@@ -56,22 +56,22 @@ class k_Medoids():
                 break
         return class_assignments, ids_of_medoids
 
-## Generate Fake Data
-print("Initializing Data.")
-ds = 3
-ks = 12
-ns = ks * 10000
-#generate test data......
-data = np.random.normal(size=(ns, ds))
-for kk in range(ks):
-    dd = (kk-1)%ds
-    data[kk*ns//ks:(kk+1)*ns//ks,dd] += 3*ds*kk
-###compute dis for each pairs
-##print("compute dis for each pairs......")
-##pair_dis = pairwise_distances(x, metric=dist)
+# ## Generate Fake Data
+# print("Initializing Data.")
+# ds = 3
+# ks = 12
+# ns = ks * 10000
+# #generate test data......
+# data = np.random.normal(size=(ns, ds))
+# for kk in range(ks):
+#     dd = (kk-1)%ds
+#     data[kk*ns//ks:(kk+1)*ns//ks,dd] += 3*ds*kk
+# ###compute dis for each pairs
+# ##print("compute dis for each pairs......")
+# ##pair_dis = pairwise_distances(x, metric=dist)
 
-## doing the k-medoids clustering....
-print("doing Kmedoids.....")
-t = k_Medoids(data)
-final_assignments, final_medoid_ids = t.kmeds()
+# ## doing the k-medoids clustering....
+# print("doing Kmedoids.....")
+# t = k_Medoids(data)
+# final_assignments, final_medoid_ids = t.kmeds()
 

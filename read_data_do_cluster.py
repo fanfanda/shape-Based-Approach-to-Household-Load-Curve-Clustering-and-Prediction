@@ -1,18 +1,22 @@
 # -*- coding: utf-8-*- 
 from user_electric import *
-
+from k_medoids_primary import *
 user_data=[]
+electric_data=np.zeros(shape=(127764,96))
 #read data from database
 for i in range(50):
     with open('/home/fanfanda/portData2015/part-000'+str(i).zfill(2), 'r') as f:                          
          data = f.readlines()  #txt中所有字符串读入data
          for index, item in enumerate(data):
              meta_data=user_electric(item.rstrip('\n').split(','))
+             electric_data[index]=meta_data.normalized_electric_data
              user_data.append(meta_data)
 
-print(user_data[0].normalized_electric_data)
-print(len(user_data))
-         
+#doing the cluster
+cluster = k_Medoids(data=electric_data,k=40,batch_size=1000)
+final_assignments, final_medoid_ids = cluster.kmeds()
+print(final_assignments)
+
          
          
 

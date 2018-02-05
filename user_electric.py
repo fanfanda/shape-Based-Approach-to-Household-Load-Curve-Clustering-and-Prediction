@@ -1,3 +1,4 @@
+import numpy as np
 class user_electric:
     def __init__(self,profiles):
         self.ID=profiles[0]
@@ -8,5 +9,5 @@ class user_electric:
         self.dataPointFlag=profiles[5]
         self.dataWholeFlag=profiles[6]
         self.electric_data=profiles[7:]
-        self.electric_data=[float(x) for x in self.electric_data]
+        self.electric_data=np.array([float(x) for x in self.electric_data])
         self.normalized_electric_data=self.electric_data/sum(self.electric_data)

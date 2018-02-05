@@ -10,6 +10,4 @@ class user_electric:
         self.dataWholeFlag=profiles[6]
         self.electric_data=profiles[7:]
         self.electric_data=np.array([float(x) for x in self.electric_data])
-        print(self.electric_data)
-        break
         self.normalized_electric_data=self.electric_data/sum(self.electric_data)

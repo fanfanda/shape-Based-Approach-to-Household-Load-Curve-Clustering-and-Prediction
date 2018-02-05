@@ -1,5 +1,5 @@
 # -*- coding: utf-8-*- 
-import user_electric
+from user_electric import *
 import numpy as np
 
 user_data=[]

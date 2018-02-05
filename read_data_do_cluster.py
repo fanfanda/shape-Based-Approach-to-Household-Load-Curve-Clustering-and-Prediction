@@ -2,12 +2,17 @@
 import user_electric
 import numpy as np
 
+user_data=[]
+#read data from database
 for i in range(50):
     with open('/home/fanfanda/portData2015/part-000'+str(i).zfill(2), 'r') as f:                          
          data = f.readlines()  #txt中所有字符串读入data
-         meta_data=data.rstrip('\n').split(',')
-         print(meta_data)
-         break
+         for index, item in enumerate(data):
+             meta_data=user_electric(item.rstrip('\n').split(','))
+             user_data.append(meta_data)
+             print(meta_data)
+             break
+         
          
          
 

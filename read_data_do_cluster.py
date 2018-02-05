@@ -14,9 +14,11 @@ for i in range(50):
              user_data.append(meta_data)
 print("doing the cluster....")
 #doing the cluster
-cluster = k_Medoids(data=electric_data,k=40,batch_size=1000)
+cluster = k_Medoids(data=electric_data,k=20,batch_size=1000)
 final_assignments, final_medoid_ids = cluster.kmeds()
 print(final_assignments)
+print(final_assignments[20:50])
+print(len(final_assignments))
 
          
          

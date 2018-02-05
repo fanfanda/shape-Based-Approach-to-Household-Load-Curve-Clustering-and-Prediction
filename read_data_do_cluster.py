@@ -1,6 +1,5 @@
 # -*- coding: utf-8-*- 
 from user_electric import *
-import numpy as np
 
 user_data=[]
 #read data from database
@@ -11,8 +10,9 @@ for i in range(50):
              print(item)
              meta_data=user_electric(item.rstrip('\n').split(','))
              user_data.append(meta_data)
-             print(meta_data)
-             break
+
+print(user_data[0].normalized_electric_data)
+print(len(user_data))
          
          
          

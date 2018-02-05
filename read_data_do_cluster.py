@@ -5,7 +5,7 @@ import numpy as np
 for i in range(50):
     with open('/home/fanfanda/portData2015/part-000'+str(i).zfill(2), 'r') as f:                          
          data = f.readlines()  #txt中所有字符串读入data
-         meta_data=data.rstrip('\n'.split(','))
+         meta_data=data.rstrip('\n').split(',')
          print(meta_data)
          break
          

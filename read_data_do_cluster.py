@@ -2,11 +2,15 @@ import user_electric
 import numpy as np
 
 for i in range(50):
-    print(i)
+    with open('/home/fanfanda/portData2015/part-000'+str(i), 'r') as f:                          
+         data = f.readlines()  #txt中所有字符串读入data
+         
+         
 
 
-a=np.array([1,2,3,4,5,6,7,8,9])
-t=user_electric.user_electric(a)
+
+# a=np.array([1,2,3,4,5,6,7,8,9])
+# t=user_electric.user_electric(a)
 
 
 

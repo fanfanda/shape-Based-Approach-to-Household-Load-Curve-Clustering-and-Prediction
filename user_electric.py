@@ -11,3 +11,5 @@ class user_electric:
         self.electric_data=profiles[7:]
         self.electric_data=np.array([float(x) for x in self.electric_data])
         self.normalized_electric_data=self.electric_data/sum(self.electric_data)
+        if np.isnan(sum(self.electric_data)) or sum(self.electric_data)==0:
+            print(self.electric_data)

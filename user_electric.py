@@ -1,7 +1,4 @@
 class user_electric:
-    """
-       用户信息以及用户用电信息
-    """
     def __init__(self,profiles):
         self.ID=profiles[0]
         self.dataDate=profiles[1]

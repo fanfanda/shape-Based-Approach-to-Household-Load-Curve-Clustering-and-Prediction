@@ -8,6 +8,7 @@ for i in range(50):
     with open('/home/fanfanda/portData2015/part-000'+str(i).zfill(2), 'r') as f:                          
          data = f.readlines()  #txt中所有字符串读入data
          for index, item in enumerate(data):
+             print(item)
              meta_data=user_electric(item.rstrip('\n').split(','))
              user_data.append(meta_data)
              print(meta_data)

@@ -71,7 +71,7 @@ class k_Medoids():
             subset = np.random.choice(self.datalens, self.batch_size, replace=False)
         for i in range(self.k):
             if self.batch_size:
-                indices = np.union1d(np.intersect1d(np.where(assignments==i)[0], subset),ids_of_medoids[i])
+                indices = np.union1d(np.intersect1d(np.where(assignments==i)[0], subset),np.array([ids_of_medoids[i]]))
             else:
                 indices = np.where(assignments==i)[0]
     ##        distances = dist(x[indices, None, :], x[None, indices, :]).sum(axis=0)

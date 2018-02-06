@@ -20,13 +20,13 @@ class k_Medoids():
         dists=self.pair_dis[:,ids_of_mediods]
         return np.argmin(dists, axis=1)
 
-    def find_medoids(self,assignments):
+    def find_medoids(self,assignments,ids_of_medoids):
         medoid_ids = np.full(self.k, -1, dtype=int)
         if self.batch_size:  #is using greedy algorithm ? 0 is not using
             subset = np.random.choice(self.datalens, self.batch_size, replace=False)
         for i in range(self.k):
             if self.batch_size:
-                indices = np.union1d(np.intersect1d(np.where(assignments==i)[0], subset),ids_of_medoids[i])
+                indices = np.union1d(np.intersect1d(np.where(assignments==i)[0], subset),np.array([ids_of_medoids[i]]))
             else:
                 indices = np.where(assignments==i)[0]
     ##        distances = dist(x[indices, None, :], x[None, indices, :]).sum(axis=0)
@@ -43,7 +43,7 @@ class k_Medoids():
 
         for i in range(self.max_iterators):
             print("\tFinding new medoids.")
-            ids_of_medoids = self.find_medoids(class_assignments)
+            ids_of_medoids = self.find_medoids(class_assignments,ids_of_medoids)
             print("\tReassigning points.")
             new_class_assignments = self.assign_nearest(ids_of_medoids)
 

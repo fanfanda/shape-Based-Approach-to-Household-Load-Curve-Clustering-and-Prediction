@@ -27,7 +27,7 @@ class k_Medoids():
             subset = np.random.choice(self.datalens, self.batch_size, replace=False)
         for i in range(self.k):
             if self.batch_size:
-                indices = np.union1d(np.intersect1d(np.where(assignments==i)[0], subset),ids_of_medoids[i])
+                indices = np.union1d(np.intersect1d(np.where(assignments==i)[0], subset),np.array([ids_of_medoids[i]]))
             else:
                 indices = np.where(assignments==i)[0]
     ##        distances = dist(x[indices, None, :], x[None, indices, :]).sum(axis=0)
@@ -56,22 +56,22 @@ class k_Medoids():
                 break
         return class_assignments, ids_of_medoids
 
-# ## Generate Fake Data
-# print("Initializing Data.")
-# ds = 3
-# ks = 12
-# ns = ks * 10000
-# #generate test data......
-# data = np.random.normal(size=(ns, ds))
-# for kk in range(ks):
-#     dd = (kk-1)%ds
-#     data[kk*ns//ks:(kk+1)*ns//ks,dd] += 3*ds*kk
-# ##compute dis for each pairs
-# ##print("compute dis for each pairs......")
-# ##pair_dis = pairwise_distances(x, metric=dist)
+## Generate Fake Data
+print("Initializing Data.")
+ds = 3
+ks = 12
+ns = ks * 10000
+#generate test data......
+data = np.random.normal(size=(ns, ds))
+for kk in range(ks):
+    dd = (kk-1)%ds
+    data[kk*ns//ks:(kk+1)*ns//ks,dd] += 3*ds*kk
+##compute dis for each pairs
+##print("compute dis for each pairs......")
+##pair_dis = pairwise_distances(x, metric=dist)
 
-# ## doing the k-medoids clustering....
-# print("doing Kmedoids.....")
-# t = k_Medoids(data)
-# final_assignments, final_medoid_ids = t.kmeds()
+## doing the k-medoids clustering....
+print("doing Kmedoids.....")
+t = k_Medoids(data)
+final_assignments, final_medoid_ids = t.kmeds()
 

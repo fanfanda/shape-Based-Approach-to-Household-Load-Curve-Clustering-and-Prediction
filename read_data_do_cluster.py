@@ -2,7 +2,7 @@
 from user_electric import *
 from k_medoids_primary import *
 user_data=[]
-
+count=0
 #read data from database
 print("read data from database....")
 for i in range(50):
@@ -11,10 +11,12 @@ for i in range(50):
          for index, item in enumerate(data):
              meta_data=user_electric(item.rstrip('\n').split(','))
              if sum(meta_data.normalized_electric_data)==0.0:
+                 print("come_in.....")
+                 count+=1
                  continue
              user_data.append(meta_data)
 electric_data=np.zeros(shape=(len(user_data),96))
-print(len(user_data))
+print("len:",len(user_data),count)
 sys.exit()
 for index,item in enumerate(user_data):
     electric_data[index]=item.normalized_electric_data

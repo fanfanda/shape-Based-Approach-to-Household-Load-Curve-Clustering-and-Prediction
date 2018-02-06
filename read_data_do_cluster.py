@@ -1,6 +1,7 @@
 # -*- coding: utf-8-*- 
 from user_electric import *
-from k_medoids_primary import *
+# from k_medoids_primary import *
+from kmedoids_v3 import *
 user_data=[]
 count=0
 #read data from database
@@ -23,7 +24,7 @@ final_assignments, final_medoid_ids = cluster.kmeds()
 
 file=open('cluster_result.txt','w')
 for i in final_assignments:
-    file.writelines(str(i))
+    file.write(str(i)+'\n')
 file.close()
 
 file=open('cluster_medoids.txt','w')

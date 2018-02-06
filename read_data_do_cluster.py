@@ -11,18 +11,11 @@ for i in range(50):
          for index, item in enumerate(data):
              meta_data=user_electric(item.rstrip('\n').split(','))
              if sum(meta_data.electric_data)==0.0:
-                 print("come_in.....")
-                 count+=1
                  continue
              user_data.append(meta_data)
 electric_data=np.zeros(shape=(len(user_data),96))
-print("len:",len(user_data),count)
-sys.exit()
 for index,item in enumerate(user_data):
     electric_data[index]=item.normalized_electric_data
-print(electric_data)
-print(electric_data[-1])
-sys.exit()
 print("doing the cluster....")
 #doing the cluster
 cluster = k_Medoids(data=electric_data,k=20,batch_size=1000)

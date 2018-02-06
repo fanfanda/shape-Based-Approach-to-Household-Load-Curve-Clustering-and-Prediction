@@ -2,7 +2,7 @@
 from user_electric import *
 from k_medoids_primary import *
 user_data=[]
-electric_data=np.zeros(shape=(127763,96))
+
 #read data from database
 print("read data from database....")
 for i in range(50):
@@ -10,8 +10,14 @@ for i in range(50):
          data = f.readlines()  #txt中所有字符串读入data
          for index, item in enumerate(data):
              meta_data=user_electric(item.rstrip('\n').split(','))
-             electric_data[index]=meta_data.normalized_electric_data
+             if sum(meta_data.normalized_electric_data)==0.0:
+                 continue
              user_data.append(meta_data)
+electric_data=np.zeros(shape=(len(user_data),96))
+print(len(user_data))
+sys.exit()
+for index,item in enumerate(user_data):
+    electric_data[index]=item.normalized_electric_data
 print(electric_data)
 print(electric_data[-1])
 sys.exit()

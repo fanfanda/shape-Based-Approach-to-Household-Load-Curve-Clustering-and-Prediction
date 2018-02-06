@@ -10,7 +10,7 @@ for i in range(50):
          data = f.readlines()  #txt中所有字符串读入data
          for index, item in enumerate(data):
              meta_data=user_electric(item.rstrip('\n').split(','))
-             if sum(meta_data.normalized_electric_data)==0.0:
+             if sum(meta_data.electric_data)==0.0:
                  print("come_in.....")
                  count+=1
                  continue

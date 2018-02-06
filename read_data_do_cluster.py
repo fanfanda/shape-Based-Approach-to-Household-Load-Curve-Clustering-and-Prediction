@@ -21,11 +21,10 @@ print("doing the cluster....")
 cluster = k_Medoids(data=electric_data,k=20,batch_size=1000)
 final_assignments, final_medoid_ids = cluster.kmeds()
 
-final_assignments=np.array(final_assignments)
-np.savetxt("cluster_result.txt", final_assignments)
-# file=open('cluster_result.txt','w')
-# file.write(str(final_assignments))
-# file.close()
+file=open('cluster_result.txt','w')
+for i in final_assignments:
+    file.write(str(final_assignments)+'\n')
+file.close()
 
 file=open('cluster_medoids.txt','w')
 file.write(str(final_medoid_ids))

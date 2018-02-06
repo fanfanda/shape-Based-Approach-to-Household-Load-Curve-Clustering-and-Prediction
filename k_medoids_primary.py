@@ -66,7 +66,7 @@ class k_Medoids():
 # for kk in range(ks):
 #     dd = (kk-1)%ds
 #     data[kk*ns//ks:(kk+1)*ns//ks,dd] += 3*ds*kk
-# ###compute dis for each pairs
+# ##compute dis for each pairs
 # ##print("compute dis for each pairs......")
 # ##pair_dis = pairwise_distances(x, metric=dist)
 

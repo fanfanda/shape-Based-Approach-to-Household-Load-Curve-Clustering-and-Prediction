@@ -12,6 +12,9 @@ for i in range(50):
              meta_data=user_electric(item.rstrip('\n').split(','))
              electric_data[index]=meta_data.normalized_electric_data
              user_data.append(meta_data)
+print(electric_data)
+print(electric_data[-1])
+sys.exit()
 print("doing the cluster....")
 #doing the cluster
 cluster = k_Medoids(data=electric_data,k=20,batch_size=1000)

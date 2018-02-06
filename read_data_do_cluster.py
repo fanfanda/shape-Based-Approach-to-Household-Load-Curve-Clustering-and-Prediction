@@ -23,7 +23,7 @@ final_assignments, final_medoid_ids = cluster.kmeds()
 
 file=open('cluster_result.txt','w')
 for i in final_assignments:
-    file.write(str(i)+'\n')
+    file.writelines(str(i))
 file.close()
 
 file=open('cluster_medoids.txt','w')

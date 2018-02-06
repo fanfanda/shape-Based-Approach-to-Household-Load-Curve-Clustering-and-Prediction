@@ -2,7 +2,7 @@
 from user_electric import *
 from k_medoids_primary import *
 user_data=[]
-electric_data=np.zeros(shape=(127764,96))
+electric_data=np.zeros(shape=(127763,96))
 #read data from database
 print("read data from database....")
 for i in range(50):

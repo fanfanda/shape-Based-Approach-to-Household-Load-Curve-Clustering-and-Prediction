@@ -4,16 +4,23 @@ from user_electric import *
 from kmedoids_v3 import *
 user_data=[]
 count=0
+exit_flag=False
 #read data from database
 print("read data from database....")
 for i in range(50):
     with open('/home/fanfanda/portData2015/part-000'+str(i).zfill(2), 'r') as f:                          
          data = f.readlines()  #txt中所有字符串读入data
          for index, item in enumerate(data):
+             count+=1
+             if count==20000:
+                 exit_flag=True
+                 break
              meta_data=user_electric(item.rstrip('\n').split(','))
              if sum(meta_data.electric_data)==0.0:
                  continue
              user_data.append(meta_data)
+         if exit_flag:
+            break
 electric_data=np.zeros(shape=(len(user_data),96))
 for index,item in enumerate(user_data):
     electric_data[index]=item.normalized_electric_data

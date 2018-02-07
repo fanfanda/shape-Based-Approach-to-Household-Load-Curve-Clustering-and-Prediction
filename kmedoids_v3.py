@@ -48,15 +48,15 @@ class k_Medoids():
         print("compute dis for each pairs......")
         self.datalens=len(data)
 ##        self.pair_dis = pairwise_distances(data, metric=dist)
-        # self.pair_dis = np.zeros((self.datalens,self.datalens))
-        # for i in range(self.datalens):
-        #      self.pair_dis[i]=np.nan
+        self.pair_dis = np.zeros((self.datalens,self.datalens))
+        for i in range(self.datalens):
+             self.pair_dis[i]=np.nan
              
     def dp_table(self,i,j):
-        # if math.isnan(self.pair_dis[i][j]):
-        #     self.pair_dis[i][j]=self.pair_dis[j][i]=dist(self.data[i],self.data[j])
-        # return self.pair_dis[i][j]
-        return fastdtw(self.data[i],self.data[j],dist=euclidean)
+        if math.isnan(self.pair_dis[i][j]):
+            self.pair_dis[i][j]=self.pair_dis[j][i]=dist(self.data[i],self.data[j])
+        return self.pair_dis[i][j]
+        # return fastdtw(self.data[i],self.data[j],dist=euclidean)
 
     def assign_nearest(self,ids_of_mediods):
 ##        dists=self.pair_dis[:,ids_of_mediods]

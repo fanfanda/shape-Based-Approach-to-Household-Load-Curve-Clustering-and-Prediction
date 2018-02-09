@@ -21,7 +21,7 @@ for i in range(50):
              user_data.append(meta_data)
          if exit_flag:
             break
-electric_data=np.zeros(shape=(len(user_data),96))
+electric_data=np.zeros(shape=(len(user_data),24))
 for index,item in enumerate(user_data):
     electric_data[index]=item.reduce_normalized_electric_data
 print("doing the cluster....")

@@ -24,6 +24,8 @@ for i in range(50):
 electric_data=np.zeros(shape=(len(user_data),24))
 for index,item in enumerate(user_data):
     electric_data[index]=item.reduce_normalized_electric_data
+print(electric_data[0],sum(electric_data[0]))
+sys.exit()
 print("doing the cluster....")
 #doing the cluster
 cluster = k_Medoids(data=electric_data,k=30,batch_size=1000)

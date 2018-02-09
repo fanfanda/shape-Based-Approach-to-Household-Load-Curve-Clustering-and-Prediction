@@ -11,3 +11,6 @@ class user_electric:
         self.electric_data=profiles[7:]
         self.electric_data=np.array([float(x) for x in self.electric_data])
         self.normalized_electric_data=self.electric_data/sum(self.electric_data)
+
+        temp=np.sum(self.normalized_electric_data.reshape(-1,4),axis=1)
+        self.reduce_normalized_electric_data=temp.reshape(-1,24)

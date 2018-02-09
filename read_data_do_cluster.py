@@ -23,7 +23,7 @@ for i in range(50):
             break
 electric_data=np.zeros(shape=(len(user_data),96))
 for index,item in enumerate(user_data):
-    electric_data[index]=item.self.reduce_normalized_electric_data
+    electric_data[index]=item.reduce_normalized_electric_data
 print("doing the cluster....")
 #doing the cluster
 cluster = k_Medoids(data=electric_data,k=5,batch_size=100)

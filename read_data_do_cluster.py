@@ -12,9 +12,9 @@ for i in range(50):
          data = f.readlines()  #txt中所有字符串读入data
          for index, item in enumerate(data):
              count+=1
-             if count==20000:
-                 exit_flag=True
-                 break
+            #  if count==20000:
+            #      exit_flag=True
+            #      break
              meta_data=user_electric(item.rstrip('\n').split(','))
              if sum(meta_data.electric_data)==0.0:
                  continue

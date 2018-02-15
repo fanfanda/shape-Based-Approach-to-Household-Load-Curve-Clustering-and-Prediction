@@ -1,7 +1,7 @@
 import numpy as np
 import math
 ##from sklearn.metrics.pairwise import pairwise_distances
-from scipy.sparse import lil_matrix
+# from scipy.sparse import lil_matrix
 from scipy.spatial.distance import euclidean
 from numpy import array, zeros, argmin, inf, equal, ndim
 from scipy.spatial.distance import cdist
@@ -49,8 +49,8 @@ class k_Medoids():
         print("compute dis for each pairs......")
         self.datalens=len(data)
 ##        self.pair_dis = pairwise_distances(data, metric=dist)
-        # self.pair_dis = np.zeros((self.datalens,self.datalens))
-        self.pair_dis = lil_matrix((self.datalens,self.datalens))
+        self.pair_dis = np.zeros((self.datalens,self.datalens))
+        # self.pair_dis = lil_matrix((self.datalens,self.datalens))
         for i in range(self.datalens):
              self.pair_dis[i]=np.nan
              

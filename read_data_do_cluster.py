@@ -12,7 +12,7 @@ for i in range(50):
          data = f.readlines()  #txt中所有字符串读入data
          for index, item in enumerate(data):
              count+=1
-             if count==80000:
+             if count==100000:
                  exit_flag=True
                  break
              meta_data=user_electric(item.rstrip('\n').split(','))

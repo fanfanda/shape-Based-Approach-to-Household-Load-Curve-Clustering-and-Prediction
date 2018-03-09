@@ -39,12 +39,11 @@ def fastdtw(x, y, dist=euclidean):
     D0[2,2] = 0
     D1 = D0[3:, 3:]
     D0[3:,3:] = cdist(x,y,dist)
-    print(D0)
+    D0[3:,3:]=np.square(D1)
     for i in range(r):
         for j in range(c):
             D1[i, j] += min(D0[i+2, j+2], D0[i+2, j+1] + D1[i,j-1], D0[i+2, j] + D1[i,j-2] + D1[i,j-1], D0[i+1,j+2] + D1[i-1,j], D0[i,j+2] + D1[i-2,j] + D1[i-1,j])
-    print(D1)
-    return D1[-1, -1] / sum(D1.shape)
+    return math.sqrt(D1[-1, -1])
 
 a=np.array([1,3,5,7,9])
 b=np.array([1,2,1,3,5])

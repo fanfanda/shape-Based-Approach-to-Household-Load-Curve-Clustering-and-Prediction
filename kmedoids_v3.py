@@ -10,7 +10,7 @@ import sys
 ######################### K-Medoids
 def dist(xa,xb):
         return fastdtw(xa, xb,dist=euclidean)
-def fastdtw(x, y, dist):
+def fastdtw(x, y, dist=euclidean):
     assert len(x)
     assert len(y)
     if ndim(x)==1:
@@ -18,15 +18,33 @@ def fastdtw(x, y, dist):
     if ndim(y)==1:
         y = y.reshape(-1,1)
     r, c = len(x), len(y)
-    D0 = zeros((r + 1, c + 1))
-    D0[0, 1:] = inf
-    D0[1:, 0] = inf
-    D1 = D0[1:, 1:]
-    D0[1:,1:] = cdist(x,y,dist)
+    D0 = zeros((r + 3, c + 3))
+    D0[:, :] = inf
+    D0[2,2] = 0
+    D1 = D0[3:, 3:]
+    D0[3:,3:] = cdist(x,y,dist)
+    D0[3:,3:]=np.square(D1)
     for i in range(r):
         for j in range(c):
-            D1[i, j] += min(D0[i, j], D0[i, j+1], D0[i+1, j])
-    return D1[-1, -1] / sum(D1.shape)
+            D1[i, j] += min(D0[i+2, j+2], D0[i+2, j+1] + D1[i,j-1], D0[i+2, j] + D1[i,j-2] + D1[i,j-1], D0[i+1,j+2] + D1[i-1,j], D0[i,j+2] + D1[i-2,j] + D1[i-1,j])
+    return math.sqrt(D1[-1, -1])
+# def fastdtw(x, y, dist):
+#     assert len(x)
+#     assert len(y)
+#     if ndim(x)==1:
+#         x = x.reshape(-1,1)
+#     if ndim(y)==1:
+#         y = y.reshape(-1,1)
+#     r, c = len(x), len(y)
+#     D0 = zeros((r + 1, c + 1))
+#     D0[0, 1:] = inf
+#     D0[1:, 0] = inf
+#     D1 = D0[1:, 1:]
+#     D0[1:,1:] = cdist(x,y,dist)
+#     for i in range(r):
+#         for j in range(c):
+#             D1[i, j] += min(D0[i, j], D0[i, j+1], D0[i+1, j])
+#     return D1[-1, -1] / sum(D1.shape)
 
 class k_Medoids():
     def __init__(self,data,k=20,batch_size=1000,max_iterators=20):

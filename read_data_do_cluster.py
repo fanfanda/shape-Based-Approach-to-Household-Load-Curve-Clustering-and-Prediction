@@ -2,6 +2,7 @@
 from user_electric import *
 # from k_medoids_primary import *
 from kmedoids_v3 import *
+from S_Dbw import *
 user_data=[]
 count=0
 exit_flag=False
@@ -12,7 +13,7 @@ for i in range(50):
          data = f.readlines()  #txt中所有字符串读入data
          for index, item in enumerate(data):
              count+=1
-             if count==100000:
+             if count==3000:
                  exit_flag=True
                  break
              meta_data=user_electric(item.rstrip('\n').split(','))
@@ -26,25 +27,22 @@ for index,item in enumerate(user_data):
     electric_data[index]=item.reduce_normalized_electric_data
 print("doing the cluster....")
 #doing the cluster
-cluster = k_Medoids(data=electric_data,k=30,batch_size=1000)
+cluster = k_Medoids(data=electric_data,k=10,batch_size=1000)
 final_assignments, final_medoid_ids = cluster.kmeds()
 
-file=open('cluster_result.txt','w')
-for i in final_assignments:
-    file.write(str(i)+'\n')
-file.close()
+# file=open('cluster_result.txt','w')
+# for i in final_assignments:
+#     file.write(str(i)+'\n')
+# file.close()
 
-file=open('cluster_medoids.txt','w')
-file.write(str(final_medoid_ids))
-file.close()
+# file=open('cluster_medoids.txt','w')
+# file.write(str(final_medoid_ids))
+# file.close()
 
+S_Dbwresult = S_Dbw(electric_data,final_assignments,final_medoid_ids)
+S_Dbwresult.S_Dbw_result()
          
-         
 
-
-
-# a=np.array([1,2,3,4,5,6,7,8,9])
-# t=user_electric.user_electric(a)
 
 
 

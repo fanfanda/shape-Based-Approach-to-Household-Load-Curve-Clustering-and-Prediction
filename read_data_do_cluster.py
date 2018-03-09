@@ -40,7 +40,7 @@ final_assignments, final_medoid_ids = cluster.kmeds()
 # file.close()
 
 S_Dbwresult = S_Dbw(electric_data,final_assignments,final_medoid_ids)
-S_Dbwresult.S_Dbw_result()
+print(S_Dbwresult.S_Dbw_result())
          
 
 

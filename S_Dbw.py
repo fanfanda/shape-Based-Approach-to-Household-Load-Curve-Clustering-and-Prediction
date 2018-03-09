@@ -54,3 +54,12 @@ class S_Dbw():
         return sum_theta_2norm/(theta_s_2norm*self.k)
     def S_Dbw_result(self):
         return self.Dens_bw()+self.Scat()
+
+
+# #just for tests
+# data = np.array([[1,2,1],[0,1,4],[3,3,3]])
+# data_cluster = np.array([1,0,1])
+# centers_id = np.array([1,0])
+
+# a = S_Dbw(data,data_cluster,centers_id)
+# a.S_Dbw_result()

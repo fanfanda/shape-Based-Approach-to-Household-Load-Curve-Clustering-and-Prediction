@@ -11,16 +11,6 @@ import sys
 def dist(xa,xb):
         return fastdtw(xa, xb,dist=euclidean)
 def fastdtw(x, y, dist):
-    """
-    Computes Dynamic Time Warping (DTW) of two sequences in a faster way.
-    Instead of iterating through each element and calculating each distance,
-    this uses the cdist function from scipy (https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.cdist.html)
-    :param array x: N1*M array
-    :param array y: N2*M array
-    :param string or func dist: distance parameter for cdist. When string is given, cdist uses optimized functions for the distance metrics.
-    If a string is passed, the distance function can be 'braycurtis', 'canberra', 'chebyshev', 'cityblock', 'correlation', 'cosine', 'dice', 'euclidean', 'hamming', 'jaccard', 'kulsinski', 'mahalanobis', 'matching', 'minkowski', 'rogerstanimoto', 'russellrao', 'seuclidean', 'sokalmichener', 'sokalsneath', 'sqeuclidean', 'wminkowski', 'yule'.
-    Returns the minimum distance, the cost matrix, the accumulated cost matrix, and the wrap path.
-    """
     assert len(x)
     assert len(y)
     if ndim(x)==1:

@@ -13,7 +13,7 @@ for i in range(50):
          data = f.readlines()  #txt中所有字符串读入data
          for index, item in enumerate(data):
              count+=1
-             if count==3000:
+             if count==300:
                  exit_flag=True
                  break
              meta_data=user_electric(item.rstrip('\n').split(','))
@@ -27,7 +27,7 @@ for index,item in enumerate(user_data):
     electric_data[index]=item.reduce_normalized_electric_data
 print("doing the cluster....")
 #doing the cluster
-cluster = k_Medoids(data=electric_data,k=10,batch_size=1000)
+cluster = k_Medoids(data=electric_data,k=5,batch_size=100)
 final_assignments, final_medoid_ids = cluster.kmeds()
 
 # file=open('cluster_result.txt','w')

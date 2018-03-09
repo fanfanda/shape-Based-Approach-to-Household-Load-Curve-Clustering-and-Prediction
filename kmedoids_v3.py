@@ -27,7 +27,6 @@ def fastdtw(x, y, dist=euclidean):
     for i in range(r):
         for j in range(c):
             D1[i, j] += min(D0[i+2, j+2], D0[i+2, j+1] + D1[i,j-1], D0[i+2, j] + D1[i,j-2] + D1[i,j-1], D0[i+1,j+2] + D1[i-1,j], D0[i,j+2] + D1[i-2,j] + D1[i-1,j])
-    print(math.sqrt(D1[-1, -1]))
     return math.sqrt(D1[-1, -1])
 # def fastdtw(x, y, dist):
 #     assert len(x)

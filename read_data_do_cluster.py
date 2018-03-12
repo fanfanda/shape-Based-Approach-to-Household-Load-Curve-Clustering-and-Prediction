@@ -7,7 +7,7 @@ user_data = []
 count = 0
 exit_flag = False
 data_size = 80000
-cluster_num = 50
+cluster_num = 100
 #read data from database
 print("read data from database....")
 for i in range(50):

@@ -114,6 +114,9 @@ class k_Medoids():
                   "".format(i, diffs))
             if diffs <= 0.01:
                 break
+        print("saving the pairs.....")
+        
+        np.save("data_pair_dis.npy",self.pair_dis)
         return class_assignments, ids_of_medoids
 
 # ## Generate Fake Data

@@ -6,8 +6,8 @@ from S_Dbw import *
 user_data = []
 count = 0
 exit_flag = False
-data_size = 100
-cluster_num = 3
+data_size = 80000
+cluster_num = 100
 #read data from database
 print("read data from database....")
 for i in range(50):
@@ -33,7 +33,7 @@ if not os.path.exists("data_"+str(data_size)+".npy"):
 
 print("doing the cluster....")
 #doing the cluster
-cluster = k_Medoids(data=electric_data,k=cluster_num,batch_size=10)
+cluster = k_Medoids(data=electric_data,k=cluster_num,batch_size=1000)
 final_assignments, final_medoid_ids = cluster.kmeds()
 
 if not os.path.exists("final_assignments_"+str(data_size)+"_"+str(cluster_num)+".npy"):

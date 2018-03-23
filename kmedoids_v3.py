@@ -58,12 +58,12 @@ class k_Medoids():
         print("compute dis for each pairs......")
         self.datalens=len(data)
 ##        self.pair_dis = pairwise_distances(data, metric=dist)
-        self.pair_dis = np.zeros((self.datalens,self.datalens))
         # self.pair_dis = lil_matrix((self.datalens,self.datalens))
         if os.path.exists("data_pair_dis.npy"):
-            self.pair_dis = np.load("data_pair_dis.npy")
             print("load history pair_dis")
+            self.pair_dis = np.load("data_pair_dis.npy")
         else:
+            self.pair_dis = np.zeros((self.datalens,self.datalens))
             for i in range(self.datalens):
                 self.pair_dis[i] = np.nan
              

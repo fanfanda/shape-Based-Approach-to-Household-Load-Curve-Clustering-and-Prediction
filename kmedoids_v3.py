@@ -1,5 +1,6 @@
 import numpy as np
 import math
+import os
 ##from sklearn.metrics.pairwise import pairwise_distances
 # from scipy.sparse import lil_matrix
 from scipy.spatial.distance import euclidean
@@ -59,8 +60,11 @@ class k_Medoids():
 ##        self.pair_dis = pairwise_distances(data, metric=dist)
         self.pair_dis = np.zeros((self.datalens,self.datalens))
         # self.pair_dis = lil_matrix((self.datalens,self.datalens))
-        for i in range(self.datalens):
-             self.pair_dis[i]=np.nan
+        if os.path.exists("data_pair_dis.npy"):
+            self.pair_dis = np.load("data_pair_dis.npy")
+        else:
+            for i in range(self.datalens):
+                self.pair_dis[i] = np.nan
              
     def dp_table(self,i,j):
         if math.isnan(self.pair_dis[i][j]):
